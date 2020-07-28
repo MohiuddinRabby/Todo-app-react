@@ -1,7 +1,15 @@
-.task-container{
-    margin-top: 10px;
+.task-container {
+  margin-top: 10px;
 }
-.task-container h2{
-    margin-left: 15px;
-    color: cadetblue;
+.task-container h2 {
+  margin-left: 15px;
+  color: cadetblue;
 }
+.task-container a {
+  text-decoration: none;
+  color: brown;
+}
+.task-container a:hover {
+    color: crimson;
+}
+  

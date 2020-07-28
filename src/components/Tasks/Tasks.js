@@ -1,10 +1,20 @@
 import React from "react";
 import "./Tasks.css";
-const Tasks = (props) => {
-  const { taskName } = props.tasks;
+const Tasks = ({ tasks, removeTask }) => {
   return (
     <div className="task-container">
-      <h2>{taskName}</h2> 
+      {tasks.map((task, index) => (
+        <h2 key={index}>
+          {task.taskName}{" "}
+          <button
+            onClick={(e) => {
+              removeTask(e, index);
+            }}
+          >
+            x
+          </button>
+        </h2>
+      ))}
     </div>
   );
 };

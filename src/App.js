@@ -19,6 +19,12 @@ function App() {
     setTasks(newTodo);
     setTodo("");
   };
+  const removeTask = (e, index) => {
+    e.preventDefault();
+    const remainTodo = [...tasks];
+    const newRemainTodo = remainTodo.splice(index, 1);
+    setTasks(remainTodo);
+  };
   return (
     <div className="container">
       <div className="todo-are">
@@ -32,9 +38,10 @@ function App() {
             />
           </form>
         </div>
-        {tasks.map((task) => (
-          <Tasks key={task.id} tasks={task}></Tasks>
-        ))}
+        {/* {tasks.map((task) => (
+          <Tasks key={task.id} tasks={task} removeTask={removeTask}></Tasks>
+        ))} */}
+        <Tasks tasks={tasks} removeTask={removeTask}></Tasks>
       </div>
     </div>
   );
