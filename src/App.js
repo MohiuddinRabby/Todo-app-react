@@ -1,6 +1,5 @@
 import React from "react";
 import "./App.css";
-import Form from "./components/Form/Form";
 import { useState } from "react";
 import Tasks from "./components/Tasks/Tasks";
 
@@ -8,14 +7,35 @@ function App() {
   const [tasks, setTasks] = useState([
     { id: 1, taskName: "Do some work" },
     { id: 2, taskName: "Do some more work" },
-    { id: 3, taskName: "No work avaiable" }
+    { id: 3, taskName: "No work avaiable" },
   ]);
+  const [todo, setTodo] = useState("");
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const newTodo = [
+      { id: Math.floor(Math.random() * 20) + 4, taskName: todo },
+      ...tasks,
+    ];
+    setTasks(newTodo);
+    setTodo("");
+  };
   return (
     <div className="container">
-      <Form></Form>
-      {tasks.map((task) => (
-        <Tasks key={task.id} tasks={tasks}></Tasks>
-      ))}
+      <div className="todo-are">
+        <div className="form-container">
+          <form onSubmit={handleSubmit}>
+            <input
+              type="text"
+              placeholder="What to do ?"
+              value={todo}
+              onChange={(e) => setTodo(e.target.value)}
+            />
+          </form>
+        </div>
+        {tasks.map((task) => (
+          <Tasks key={task.id} tasks={task}></Tasks>
+        ))}
+      </div>
     </div>
   );
 }
