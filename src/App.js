@@ -16,7 +16,11 @@ function App() {
       { id: Math.floor(Math.random() * 20) + 4, taskName: todo },
       ...tasks,
     ];
-    setTasks(newTodo);
+    if (todo === "") {
+      alert("empty input");
+    } else {
+      setTasks(newTodo);
+    }
     setTodo("");
   };
   const removeTask = (e, index) => {
